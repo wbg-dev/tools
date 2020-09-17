@@ -10,6 +10,7 @@ public interface QueueTools {
 
     Object [] deleteElementFromQueue(Object [] originQueue,int location);
 
+    @Deprecated
     Object updateElementFromQueue(Object [] originQueue,int location,Object updatedElement);
 
     Object [] takeElementFromQueue(Object [] originQueue,int location);

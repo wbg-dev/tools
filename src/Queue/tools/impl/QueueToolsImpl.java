@@ -69,7 +69,6 @@ public class QueueToolsImpl implements QueueTools {
             return null;
         Object [] newQueue= new Object[originQueue.length-1];
         location-=1;
-        //最后一个未删除
         if (location >= 0)
             System.arraycopy(originQueue, 0, newQueue, 0, location);
         System.arraycopy(originQueue,location+1,newQueue,location,originQueue.length-location-1);
@@ -86,10 +85,10 @@ public class QueueToolsImpl implements QueueTools {
     @Override
     public Object[] takeElementFromQueue(Object[] originQueue, int location) {
         if (location>originQueue.length)
-            System.out.println("您输入的参数不合法，默认将其转为空队列");
+            System.out.println("输入的参数不合法，默认将其转为空队列");
         if (originQueue.length!=0 &&location<originQueue.length) {
-            Object temp = originQueue[location - 1];
-            System.out.println("取走的元素是："+temp);
+            Object beTakenElement = originQueue[location - 1];
+            System.out.println("取走的元素是："+beTakenElement);
             System.out.println("现在的队列：");
             return deleteElementFromQueue(originQueue,location);
         }else return null;
