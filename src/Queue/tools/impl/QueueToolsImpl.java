@@ -24,8 +24,9 @@ public class QueueToolsImpl implements QueueTools {
 
         ArrayList<Object> tempArrayList=new ArrayList<>();
         int i=0;
-        // For solving how to stop input,we adapt random number combined with "end" as end code!
-        // using end code,you could stop input!
+        // For solving how to stop input,we adapt random number combined with the string "END" as end code !
+        // For instance, "23.0END".
+        // Using the end code,you could stop input!
         System.out.println("---Queue Input Start---");
         String endCode=Math.ceil(new Random().nextDouble()*100)+"END";
         System.out.println("---If You want to end Input, Please input: "+endCode+"---");
