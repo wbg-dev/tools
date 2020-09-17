@@ -8,9 +8,9 @@ public interface QueueTools {
 
     Object [] addElementToQueue(Object [] originQueue);
 
-    Object [] deleteElementToQueue(Object [] originQueue,int location);
+    Object [] deleteElementFromQueue(Object [] originQueue,int location);
 
-    Object updateElementToQueue(Object [] originQueue,int location,Object updatedElement);
+    Object updateElementFromQueue(Object [] originQueue,int location,Object updatedElement);
 
-
+    Object [] takeElementFromQueue(Object [] originQueue,int location);
 }

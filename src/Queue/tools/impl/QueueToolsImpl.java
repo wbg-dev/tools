@@ -11,10 +11,12 @@ public class QueueToolsImpl implements QueueTools {
 
     @Override
     public void outputQueue(Object [] queue) {
-        for (Object Queue : queue
-             ) {
-            System.out.println(Queue);
-        }
+        if (queue!=null) {
+            for (Object Queue : queue
+            ) {
+                System.out.println(Queue);
+            }
+        }else System.out.println("现在队列是空队列");
     }
 
     @Override
@@ -62,7 +64,7 @@ public class QueueToolsImpl implements QueueTools {
     }
 
     @Override
-    public Object[] deleteElementToQueue(Object [] originQueue,int location) {
+    public Object[] deleteElementFromQueue(Object [] originQueue,int location) {
         if (location>=originQueue.length)
             return null;
         Object [] newQueue= new Object[originQueue.length-1];
@@ -75,9 +77,22 @@ public class QueueToolsImpl implements QueueTools {
     }
 
     @Override
-    public Object[] updateElementToQueue(Object [] originQueue,int location,Object updatedElement) {
+    public Object[] updateElementFromQueue(Object [] originQueue,int location,Object updatedElement) {
         location-=1;
         originQueue[location]=updatedElement;
         return originQueue;
+    }
+
+    @Override
+    public Object[] takeElementFromQueue(Object[] originQueue, int location) {
+        if (location>originQueue.length)
+            System.out.println("您输入的参数不合法，默认将其转为空队列");
+        if (originQueue.length!=0 &&location<originQueue.length) {
+            Object temp = originQueue[location - 1];
+            System.out.println("取走的元素是："+temp);
+            System.out.println("现在的队列：");
+            return deleteElementFromQueue(originQueue,location);
+        }else return null;
+
     }
 }
