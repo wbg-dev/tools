@@ -16,7 +16,7 @@ public class QueueToolsImpl implements QueueTools {
             ) {
                 System.out.println(Queue);
             }
-        }else System.out.println("现在队列是空队列");
+        }else System.out.println("Current queue is null!");
     }
 
     @Override
@@ -55,7 +55,7 @@ public class QueueToolsImpl implements QueueTools {
         int j=0;
         for (int i = originQueue.length; i <length ; i++) {
             tempArrayList.add(i,addedArray[j++]);
-            System.out.println("已填加第"+j+"个元素");
+            System.out.println("No." + j + "element is added!");
         }
         for (int i = 0; i <length ; i++) {
             newArray[i]=tempArrayList.get(i);
@@ -78,7 +78,7 @@ public class QueueToolsImpl implements QueueTools {
 
     @Override
     public Object[] updateElementFromQueue(Object [] originQueue,Object updatedElement) {
-        int location=1;
+        int location=originQueue.length;
         location-=1;
         originQueue[location]=updatedElement;
         return originQueue;
@@ -88,11 +88,11 @@ public class QueueToolsImpl implements QueueTools {
     public Object[] takeElementFromQueue(Object[] originQueue) {
         int location=1;
         if (location>originQueue.length)
-            System.out.println("输入的参数不合法，默认将其转为空队列");
+            System.out.println("Illegal parameter，Using default null queue!");
         if (originQueue.length!=0 &&location<originQueue.length) {
             Object beTakenElement = originQueue[location - 1];
-            System.out.println("取走的元素是："+beTakenElement);
-            System.out.println("现在的队列：");
+            System.out.println("Taken element："+beTakenElement);
+            System.out.println("Current queue：");
             return deleteElementFromQueue(originQueue);
         }else return null;
 
@@ -100,7 +100,7 @@ public class QueueToolsImpl implements QueueTools {
 
     @Override
     public void outputWelcomeOnConsole() {
-        System.out.println("******欢迎使用SimpleQueueTools******");
+        System.out.println("******Thanks for using SimpleQueueTools******");
     }
 
 }
