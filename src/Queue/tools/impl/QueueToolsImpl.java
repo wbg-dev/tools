@@ -44,7 +44,7 @@ public class QueueToolsImpl implements QueueTools {
     }
 
     @Override
-    public Object[] addElementToQueue(Object [] originQueue) {
+    public Object[] addElementToQueueRear(Object [] originQueue) {
         Object[] addedArray = getQueue();
         ArrayList<Object> tempArrayList=new ArrayList<>();
         int length = addedArray.length+originQueue.length;
@@ -52,8 +52,8 @@ public class QueueToolsImpl implements QueueTools {
         for (int i = 0; i < originQueue.length; i++) {
             tempArrayList.add(i,originQueue[i]);
         }
+        int j=0;
         for (int i = originQueue.length; i <length ; i++) {
-            int j=0;
             tempArrayList.add(i,addedArray[j++]);
             System.out.println("已填加第"+j+"个元素");
         }
@@ -64,7 +64,8 @@ public class QueueToolsImpl implements QueueTools {
     }
 
     @Override
-    public Object[] deleteElementFromQueue(Object [] originQueue,int location) {
+    public Object[] deleteElementFromQueue(Object [] originQueue) {
+        int location=1;
         if (location>=originQueue.length)
             return null;
         Object [] newQueue= new Object[originQueue.length-1];
@@ -76,22 +77,30 @@ public class QueueToolsImpl implements QueueTools {
     }
 
     @Override
-    public Object[] updateElementFromQueue(Object [] originQueue,int location,Object updatedElement) {
+    public Object[] updateElementFromQueue(Object [] originQueue,Object updatedElement) {
+        int location=1;
         location-=1;
         originQueue[location]=updatedElement;
         return originQueue;
     }
 
     @Override
-    public Object[] takeElementFromQueue(Object[] originQueue, int location) {
+    public Object[] takeElementFromQueue(Object[] originQueue) {
+        int location=1;
         if (location>originQueue.length)
             System.out.println("输入的参数不合法，默认将其转为空队列");
         if (originQueue.length!=0 &&location<originQueue.length) {
             Object beTakenElement = originQueue[location - 1];
             System.out.println("取走的元素是："+beTakenElement);
             System.out.println("现在的队列：");
-            return deleteElementFromQueue(originQueue,location);
+            return deleteElementFromQueue(originQueue);
         }else return null;
 
     }
+
+    @Override
+    public void outputWelcomeOnConsole() {
+        System.out.println("******欢迎使用SimpleQueueTools******");
+    }
+
 }
