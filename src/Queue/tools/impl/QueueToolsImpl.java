@@ -24,7 +24,8 @@ public class QueueToolsImpl implements QueueTools {
 
         ArrayList<Object> tempArrayList=new ArrayList<>();
         int i=0;
-        // 为了解决停止问题 这里使用了随机数字+字符串“end”的口令 使用该口令可以结束输入
+        // For solving how to stop input,we adapt random number combined with "end" as end code!
+        // using end code,you could stop input!
         System.out.println("---Queue Input Start---");
         String endCode=Math.ceil(new Random().nextDouble()*100)+"END";
         System.out.println("---If You want to end Input, Please input: "+endCode+"---");
