@@ -32,7 +32,7 @@ public class QueueToolsImpl implements QueueTools {
         System.out.println("---If You want to end Input, Please input: "+endCode+"---");
         Scanner sc=new Scanner(System.in);
         while (true){
-            String element=sc.next();
+            Object element=sc.next();
             if (!element.equals(endCode)) {
                 tempArrayList.add(i++, element);
             }else break;
