@@ -68,7 +68,7 @@ public class QueueToolsImpl implements QueueTools {
     @Override
     public Object[] deleteElementFromQueue(Object [] originQueue) {
         int location=1;
-        if (location>=originQueue.length)
+        if (location>=originQueue.length )
             return null;
         Object [] newQueue= new Object[originQueue.length-1];
         location-=1;
@@ -80,10 +80,19 @@ public class QueueToolsImpl implements QueueTools {
 
     @Override
     public Object[] updateElementFromQueue(Object [] originQueue,Object updatedElement) {
-        int location=originQueue.length;
-        location-=1;
-        originQueue[location]=updatedElement;
-        return originQueue;
+        int location;
+        System.out.println("Please select the position you want!");
+        Scanner sc=new Scanner(System.in);
+        if (sc.hasNextInt()) {
+
+            location=sc.nextInt()-1;
+            if (location>originQueue.length || location<0){
+                System.out.println("Illegal parameter，Using default null queue!");
+                return null;
+            }
+            originQueue[location] = updatedElement;
+            return originQueue;
+        } else return null;
     }
 
     @Override

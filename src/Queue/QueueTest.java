@@ -13,7 +13,7 @@ public class QueueTest {
         //example 2：Delete first element,then output the new queue!
 //        test.outputQueue(test.deleteElementFromQueue(test.getQueue()));
         //example 3: Update last element,then output the new queue!
-//        test.outputQueue(test.updateElementFromQueue(test.getQueue(),3));
+        test.outputQueue(test.updateElementFromQueue(test.getQueue(),3));
         //example 4: Add new element to the rear of the queue,then output the new queue!
 //        test.outputQueue(test.addElementToQueueRear(test.getQueue()));
         //example 5: Take out the first element,then output the new queue!
