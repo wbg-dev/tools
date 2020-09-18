@@ -81,18 +81,27 @@ public class QueueToolsImpl implements QueueTools {
     @Override
     public Object[] updateElementFromQueue(Object [] originQueue,Object updatedElement) {
         int location;
-        System.out.println("Please select the position you want!");
         Scanner sc=new Scanner(System.in);
-        if (sc.hasNextInt()) {
+        System.out.println();
+        System.out.println("This method provider convenience for users,But not recommended!");
+        System.out.println("This method is not suitable for queue theory,Are you definitely use it?");
+        System.out.println("Y : yes");
+        System.out.println("N : no");
+        String yesOrNo=sc.next();
+        if (yesOrNo.equalsIgnoreCase("Y")) {
+            System.out.println("Please select the position you want!");
 
-            location=sc.nextInt()-1;
-            if (location>originQueue.length || location<0){
-                System.out.println("Illegal parameter，Using default null queue!");
-                return null;
-            }
-            originQueue[location] = updatedElement;
-            return originQueue;
-        } else return null;
+            if (sc.hasNextInt()) {
+
+                location = sc.nextInt() - 1;
+                if (location > originQueue.length || location < 0) {
+                    System.out.println("Illegal parameter，Using default null queue!");
+                    return null;
+                }
+                originQueue[location] = updatedElement;
+                return originQueue;
+            } else return null;
+        }else return getQueue();
     }
 
     @Override
