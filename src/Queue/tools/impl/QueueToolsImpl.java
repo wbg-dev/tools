@@ -101,7 +101,11 @@ public class QueueToolsImpl implements QueueTools {
                 originQueue[location] = updatedElement;
                 return originQueue;
             } else return null;
-        }else return getQueue();
+        }else {
+            System.out.println("This program will return your origin queue!");
+            if (originQueue.length==0)
+                System.out.println("There are no elements!");
+            return originQueue;}
     }
 
     @Override
