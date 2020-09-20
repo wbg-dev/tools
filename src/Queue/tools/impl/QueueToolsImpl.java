@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class QueueToolsImpl implements QueueTools {
-
+    private Scanner sc=new Scanner(System.in);
 
     @Override
     public void outputQueue(Object [] queue) {
@@ -16,11 +16,16 @@ public class QueueToolsImpl implements QueueTools {
             ) {
                 System.out.println(Queue);
             }
-        }else System.out.println("Current queue is null!");
+        }else System.out.println("Current Queue Is Null!");
     }
 
     @Override
-    public Object [] getQueue() {
+    public void outputQueue() {
+        outputQueue(createQueue());
+    }
+
+    @Override
+    public Object [] createQueue() {
 
         ArrayList<Object> tempArrayList=new ArrayList<>();
         int i=0;
@@ -29,8 +34,7 @@ public class QueueToolsImpl implements QueueTools {
         // Using the end code,you could stop input!
         System.out.println("---Queue Input Start---");
         String endCode=Math.ceil(new Random().nextDouble()*100)+"END";
-        System.out.println("---If You want to end Input, Please input: "+endCode+"---");
-        Scanner sc=new Scanner(System.in);
+        System.out.println("---If You Want To End Input, Please Input: "+endCode+"---");
         while (true){
             Object element=sc.next();
             if (!element.equals(endCode)) {
@@ -47,7 +51,7 @@ public class QueueToolsImpl implements QueueTools {
 
     @Override
     public Object[] addElementToQueueRear(Object [] originQueue) {
-        Object[] addedArray = getQueue();
+        Object[] addedArray = createQueue();
         ArrayList<Object> tempArrayList=new ArrayList<>();
         int length = addedArray.length+originQueue.length;
         Object[] newArray=new String[length];
@@ -57,12 +61,17 @@ public class QueueToolsImpl implements QueueTools {
         int j=0;
         for (int i = originQueue.length; i <length ; i++) {
             tempArrayList.add(i,addedArray[j++]);
-            System.out.println("No." + j + "element is added!");
+            System.out.println("No." + j + "Element Is Added!");
         }
         for (int i = 0; i <length ; i++) {
             newArray[i]=tempArrayList.get(i);
         }
         return newArray;
+    }
+
+    @Override
+    public Object[] addElementToQueueRear() {
+        return addElementToQueueRear(createQueue());
     }
 
     @Override
@@ -79,52 +88,66 @@ public class QueueToolsImpl implements QueueTools {
     }
 
     @Override
+    public Object[] deleteElementFromQueue() {
+        return deleteElementFromQueue(createQueue());
+    }
+
+    @Override
     public Object[] updateElementFromQueue(Object [] originQueue,Object updatedElement) {
         int location;
-        Scanner sc=new Scanner(System.in);
         System.out.println();
-        System.out.println("This method provider convenience for users,But not recommended!");
-        System.out.println("This method is not suitable for queue theory,Are you definitely use it?");
+        System.out.println("This Method Provider Convenience For Users,But Not Recommended!");
+        System.out.println("This Method Is Not Suitable For Queue Theory,Are You Definitely Use It?");
         System.out.println("Y : yes");
         System.out.println("N : no");
         String yesOrNo=sc.next();
         if (yesOrNo.equalsIgnoreCase("Y")) {
-            System.out.println("Please select the position you want!");
+            System.out.println("Please Select The Position You Want!");
 
             if (sc.hasNextInt()) {
 
                 location = sc.nextInt() - 1;
                 if (location > originQueue.length || location < 0) {
-                    System.out.println("Illegal parameter，Using default null queue!");
+                    System.out.println("Illegal Parameter，Using Default Null Queue!");
                     return null;
                 }
                 originQueue[location] = updatedElement;
                 return originQueue;
             } else return null;
         }else {
-            System.out.println("This program will return your origin queue!");
+            System.out.println("This Program Will Return Your Origin Queue!");
             if (originQueue.length==0)
-                System.out.println("There are no elements!");
+                System.out.println("There Are No Elements!");
             return originQueue;}
+    }
+
+    @Override
+    public Object[] updateElementFromQueue(Object updatedElement) {
+        return updateElementFromQueue(createQueue(),updatedElement);
     }
 
     @Override
     public Object[] takeElementFromQueue(Object[] originQueue) {
         int location=1;
         if (location>originQueue.length)
-            System.out.println("Illegal parameter，Using default null queue!");
+            System.out.println("Illegal parameter，Using Default Null Queue!");
         if (originQueue.length!=0 &&location<originQueue.length) {
             Object beTakenElement = originQueue[location - 1];
-            System.out.println("Taken element："+beTakenElement);
-            System.out.println("Current queue：");
+            System.out.println("Taken Element："+beTakenElement);
+            System.out.println("Current Queue：");
             return deleteElementFromQueue(originQueue);
         }else return null;
 
     }
 
     @Override
+    public Object[] takeElementFromQueue() {
+        return takeElementFromQueue(createQueue());
+    }
+
+    @Override
     public void outputWelcomeOnConsole() {
-        System.out.println("******Thanks for using SimpleQueueTools******");
+        System.out.println("******Thanks Tor Using Simple Queue Tools******");
     }
 
 }
