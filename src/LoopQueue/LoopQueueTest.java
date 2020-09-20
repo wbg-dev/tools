@@ -32,5 +32,9 @@ public class LoopQueueTest {
         //Using this method,you need to use example one!
 //        Object[] objects = test.takeFrontElementFromLoopQueue(loopQueue);
 //        test.outputLoopQueue(objects);
+        //Example seven : You can also use above method without any parameter !
+        //Here is an example !
+//        Object[] objects = test.addElementToRear();
+//        test.outputLoopQueue(objects);
     }
 }
