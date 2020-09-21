@@ -6,22 +6,22 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class LoopQueueToolsImpl implements LoopQueueTools {
-    private Scanner sc=new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
     @Override
     public Object[] createLoopQueue(int length) {
-        Object [] loopQueue=new Object[length];
-        int count=0;
+        Object[] loopQueue = new Object[length];
+        int count = 0;
         System.out.println("--- Loop Queue Input Start ---");
-        String endCode=Math.ceil(new Random().nextDouble()*100)+"END";
-        System.out.println("--- If You Want To End Input, Please Input: "+endCode+" ---");
-        while (true){
-            if (count==length)
+        String endCode = Math.ceil(new Random().nextDouble() * 100) + "END";
+        System.out.println("--- If You Want To End Input, Please Input: " + endCode + " ---");
+        while (true) {
+            if (count == length)
                 break;
-            Object element=sc.next();
+            Object element = sc.next();
             if (!element.equals(endCode)) {
-                loopQueue[count++]=element;
-            }else break;
+                loopQueue[count++] = element;
+            } else break;
         }
         return loopQueue;
     }
@@ -35,13 +35,13 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public void outputLoopQueue(Object[] loopQueue) {
-        if (loopQueue==null||loopQueue.length==0){
+        if (loopQueue == null || loopQueue.length == 0) {
             System.out.println("Now , This Loop Queue Is Null!");
-        }else
-        for (Object loop: loopQueue
-             ) {
-            System.out.println(loop);
-        }
+        } else
+            for (Object loop : loopQueue
+            ) {
+                System.out.println(loop);
+            }
     }
 
     @Override
@@ -50,16 +50,16 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
     }
 
     @Override
-    public Object[] addElementToRear(Object[] loopQueue,Object[] addedElement) {
-        int loopQueueMaxSize=loopQueue.length;
-        int currentQueueSize=getSize(loopQueue);
-        int remain=loopQueueMaxSize-currentQueueSize;
+    public Object[] addElementToRear(Object[] loopQueue, Object[] addedElement) {
+        int loopQueueMaxSize = loopQueue.length;
+        int currentQueueSize = getSize(loopQueue);
+        int remain = loopQueueMaxSize - currentQueueSize;
 
-        if (addedElement.length<=remain){
+        if (addedElement.length <= remain) {
             for (Object anAddedElement : addedElement) {
                 loopQueue[currentQueueSize++] = anAddedElement;
             }
-        }else{
+        } else {
             System.out.println("Illegal Inserting! Using Default Null Loop Queue!");
             return null;
         }
@@ -68,12 +68,12 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public Object[] addElementToRear(Object[] loopQueue) {
-        Object [] addedElement;
+        Object[] addedElement;
         System.out.println("Please Input The mount of the Element You Want To Input!");
         int addedNumber = sc.nextInt();
         System.out.println("Please Input What You Want Add!");
-        addedElement=createLoopQueue(addedNumber);
-        return addElementToRear(loopQueue,addedElement);
+        addedElement = createLoopQueue(addedNumber);
+        return addElementToRear(loopQueue, addedElement);
     }
 
     @Override
@@ -81,22 +81,22 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
         System.out.println(" Input Each Queue's Length! ");
         int parameterOne = sc.nextInt();
         int parameterTwo = sc.nextInt();
-        return addElementToRear(createLoopQueue(parameterOne),createLoopQueue(parameterTwo));
+        return addElementToRear(createLoopQueue(parameterOne), createLoopQueue(parameterTwo));
     }
 
     @Override
-    public Object[] takeFrontElementFromLoopQueue(Object [] loopQueue) {
+    public Object[] takeFrontElementFromLoopQueue(Object[] loopQueue) {
         Object firstElement = loopQueue[0];
-        if (getSize(loopQueue)==1){
+        if (getSize(loopQueue) == 1) {
             System.out.println("The Taken Element Is " + firstElement);
             return null;
         }
-        if (getSize(loopQueue)>1) {
+        if (getSize(loopQueue) > 1) {
             System.out.println("The Taken Element Is " + firstElement);
             System.arraycopy(loopQueue, 1, loopQueue, 0, loopQueue.length - 1);
             loopQueue[getSize(loopQueue) - 1] = null;
             return loopQueue;
-        }else {
+        } else {
             System.out.println("Illegal Parameter! Using Default Null Queue! ");
             return null;
         }
@@ -109,7 +109,7 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public boolean isMax(Object[] loopQueue) {
-        return loopQueue.length==getSize(loopQueue);
+        return loopQueue.length == getSize(loopQueue);
     }
 
     @Override
@@ -119,7 +119,7 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public boolean isNull(Object[] loopQueue) {
-        return loopQueue[0]==null;
+        return loopQueue[0] == null;
     }
 
     @Override
@@ -129,7 +129,7 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public int getSize(Object[] loopQueue) {
-        int notNullNumber=0;
+        int notNullNumber = 0;
         for (Object aLoopQueue : loopQueue) {
             if (aLoopQueue != null)
                 notNullNumber++;

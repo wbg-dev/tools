@@ -2,33 +2,33 @@ package LoopQueue.tools;
 
 public interface LoopQueueTools {
 
-    Object [] createLoopQueue(int length);
+    Object[] createLoopQueue(int length);
 
-    Object [] createLoopQueue();
+    Object[] createLoopQueue();
 
-    void outputLoopQueue(Object [] loopQueue);
+    void outputLoopQueue(Object[] loopQueue);
 
     void outputLoopQueue();
 
-    Object [] addElementToRear(Object[] loopQueue,Object[] addedElement);
+    Object[] addElementToRear(Object[] loopQueue, Object[] addedElement);
 
-    Object [] addElementToRear(Object[] loopQueue);
+    Object[] addElementToRear(Object[] loopQueue);
 
-    Object [] addElementToRear();
+    Object[] addElementToRear();
 
-    Object [] takeFrontElementFromLoopQueue(Object[] loopQueue);
+    Object[] takeFrontElementFromLoopQueue(Object[] loopQueue);
 
-    Object [] takeFrontElementFromLoopQueue();
+    Object[] takeFrontElementFromLoopQueue();
 
-    boolean isMax(Object [] loopQueue);
+    boolean isMax(Object[] loopQueue);
 
     boolean isMax();
 
-    boolean isNull(Object [] loopQueue);
+    boolean isNull(Object[] loopQueue);
 
     boolean isNull();
 
-    int getSize(Object [] loopQueue);
+    int getSize(Object[] loopQueue);
 
     int getSize();
 
