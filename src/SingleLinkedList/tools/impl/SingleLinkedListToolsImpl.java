@@ -7,7 +7,6 @@ import java.util.*;
 public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
 
     private Scanner sc = new Scanner(System.in);
-
     private Map<Integer, Object[]> singleLinkedList;
 
     @Override
@@ -47,19 +46,21 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
     }
 
     @Override
-    public void outputSingleLinkedList(Map<Integer, Object[]> singleLinkedList) {
-        if (singleLinkedList.size() != 1) {
-            for (int i = 0; i < singleLinkedList.size(); i++) {
-                Object[] objects = singleLinkedList.get(i);
-                if (objects[1] != null)
-                    System.out.println(objects[1]);
-            }
+    public void outputNoOrderedSingleLinkedList(Map<Integer, Object[]> singleLinkedList) {
+        if (singleLinkedList != null) {
+            if (singleLinkedList.size() != 1) {
+                for (int i = 0; i < singleLinkedList.size(); i++) {
+                    Object[] objects = singleLinkedList.get(i);
+                    if (objects[1] != null)
+                        System.out.println(objects[1]);
+                }
+            } else System.out.println(" The Single Linked List Is Null ! ");
         } else System.out.println(" The Single Linked List Is Null ! ");
     }
 
     @Override
-    public void outputSingleLinkedList() {
-        outputSingleLinkedList(createSingleLinkedList());
+    public void outputNoOrderedSingleLinkedList() {
+        outputNoOrderedSingleLinkedList(createSingleLinkedList());
     }
 
     @Override
@@ -98,32 +99,58 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
     }
 
     @Override
-    public void addElementByIndex(Map<Integer, Object[]> singleLinkedList, int index) {
-
+    public Map<Integer, Object[]> addAnElementByIndex(Map<Integer, Object[]> singleLinkedList, Map<Integer, Object[]> addedSingleLinkedList) {
+        System.out.println("*** Input The Index ! ***");
+        if (sc.hasNextInt()) {
+            int index = sc.nextInt();
+            if (index > 0) {
+                Object[] addedObjects = addedSingleLinkedList.get(1);
+                addedObjects[0] = index;
+                int currentSize = singleLinkedList.size();
+                singleLinkedList.put(currentSize, addedObjects);
+                Object[] lastObjects = singleLinkedList.get(index - 1);
+                lastObjects[0] = currentSize;
+                Object[] nextObjects = singleLinkedList.get(index);
+                nextObjects[0] = singleLinkedList.size();
+                return singleLinkedList;
+            } else {
+                System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
+                return null;
+            }
+        } else {
+            System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
+            return null;
+        }
     }
 
     @Override
-    public void addElementByIndex() {
-
+    public Map<Integer, Object[]> addSeveralElementsByIndex(Map<Integer, Object[]> singleLinkedList, Map<Integer, Object[]> addedSingleLinkedList) {
+        return null;
     }
 
-    @Override
-    public void deleteElementByIndex(Map<Integer, Object[]> singleLinkedList, int index) {
 
+    @Override
+    public Map<Integer, Object[]> deleteElementByIndex(Map<Integer, Object[]> singleLinkedList) {
+        System.out.println("*** Input The Index ! ***");
+
+        if (sc.hasNextInt()) {
+            int index = sc.nextInt();
+
+            if (index > 0) {
+                return null;
+            } else {
+                System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
+                return null;
+            }
+        } else {
+            System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
+            return null;
+        }
     }
 
-    @Override
-    public void deleteElementByIndex() {
-
-    }
 
     @Override
-    public void updateElementByIndex(Map<Integer, Object[]> singleLinkedList, int index) {
-
-    }
-
-    @Override
-    public void updateElementByIndex() {
+    public void updateElementByIndex(Map<Integer, Object[]> singleLinkedList) {
 
     }
 

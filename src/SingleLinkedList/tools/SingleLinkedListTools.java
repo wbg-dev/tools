@@ -1,6 +1,5 @@
 package SingleLinkedList.tools;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 public interface SingleLinkedListTools {
@@ -9,9 +8,9 @@ public interface SingleLinkedListTools {
 
     void outputWelcomeOnConsole();
 
-    void outputSingleLinkedList(Map<Integer, Object[]> singleLinkedList);
+    void outputNoOrderedSingleLinkedList(Map<Integer, Object[]> singleLinkedList);
 
-    void outputSingleLinkedList();
+    void outputNoOrderedSingleLinkedList();
 
     void queryElementByIndex(Map<Integer, Object[]> singleLinkedList, int index);
 
@@ -21,16 +20,17 @@ public interface SingleLinkedListTools {
 
     void getElementByIndex();
 
-    void addElementByIndex(Map<Integer, Object[]> singleLinkedList, int index);
+    Map<Integer, Object[]> addAnElementByIndex(Map<Integer, Object[]> singleLinkedList,
+                                               Map<Integer, Object[]> addedSingleLinkedList);
 
-    void addElementByIndex();
+    Map<Integer, Object[]> addSeveralElementsByIndex(Map<Integer, Object[]> singleLinkedList,
+                                                     Map<Integer, Object[]> addedSingleLinkedList);
 
-    void deleteElementByIndex(Map<Integer, Object[]> singleLinkedList, int index);
 
-    void deleteElementByIndex();
+    Map<Integer, Object[]> deleteElementByIndex(Map<Integer, Object[]> singleLinkedList);
 
-    void updateElementByIndex(Map<Integer, Object[]> singleLinkedList, int index);
 
-    void updateElementByIndex();
+    void updateElementByIndex(Map<Integer, Object[]> singleLinkedList);
+
 
 }

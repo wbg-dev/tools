@@ -21,6 +21,13 @@ public class SingleLinkedListMainTest {
 //        Map<Integer, Object[]> singleLinkedList = test.createSingleLinkedList();
 //        test.queryElementByIndex(singleLinkedList,1);
 //        test.queryElementByIndex();
-        test.queryElementByIndex();
+//        test.queryElementByIndex();
+        // Example four : You can insert any element to anywhere within legal region !
+        // Because hashMap is set for storing, the non-parameter method is not provided!
+//        Map<Integer, Object[]> singleLinkedList = test.createSingleLinkedList();
+//        Map<Integer, Object[]> singleLinkedList1 = test.createSingleLinkedList();
+//        Map<Integer, Object[]> integerMap = test.addAnElementByIndex(singleLinkedList,singleLinkedList1);
+//        test.outputNoOrderedSingleLinkedList(integerMap);
+//            test.createSingleLinkedList();
     }
 }
