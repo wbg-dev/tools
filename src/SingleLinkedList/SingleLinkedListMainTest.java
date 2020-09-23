@@ -29,5 +29,14 @@ public class SingleLinkedListMainTest {
 //        Map<Integer, Object[]> integerMap = test.addAnElementByIndex(singleLinkedList,singleLinkedList1);
 //        test.outputNoOrderedSingleLinkedList(integerMap);
 //            test.createSingleLinkedList();
+        // Example five : You can delete any element from the list within legal region!
+        // Warning! If you don't use the relevant output method, The console might report Exception!
+//        Map<Integer, Object[]> singleLinkedList = test.createSingleLinkedList();
+//        Map<Integer, Object[]> integerMap = test.deleteElementByIndex(singleLinkedList);
+//        test.outputWithLinkedIndex(integerMap);
+        // Example Six : Using this method , You can update element by index!
+//        Map<Integer, Object[]> singleLinkedList = test.createSingleLinkedList();
+//        Map<Integer, Object[]> integerMap = test.updateElementByIndex(singleLinkedList);
+//        test.outputWithLinkedIndex(integerMap);
     }
 }

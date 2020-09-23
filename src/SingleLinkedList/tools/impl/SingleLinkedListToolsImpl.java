@@ -47,6 +47,9 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
 
     @Override
     public void outputNoOrderedSingleLinkedList(Map<Integer, Object[]> singleLinkedList) {
+        System.out.println("If The Single Linked List Is Not Modified,This Method could Be Used !");
+        System.out.println("Otherwise, You Should Better Use outputWithLinkedIndex Method!");
+        System.out.println("This Method Might Report Null Pointer Exception!");
         if (singleLinkedList != null) {
             if (singleLinkedList.size() != 1) {
                 for (int i = 0; i < singleLinkedList.size(); i++) {
@@ -77,7 +80,6 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
         singleLinkedList = createSingleLinkedList();
         System.out.println("*** Input The Index ! ***");
         queryElementByIndex(singleLinkedList, sc.nextInt());
-
     }
 
     @Override
@@ -112,6 +114,7 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
                 lastObjects[0] = currentSize;
                 Object[] nextObjects = singleLinkedList.get(index);
                 nextObjects[0] = singleLinkedList.size();
+                singleLinkedList.get(singleLinkedList.size())[0] = null;
                 return singleLinkedList;
             } else {
                 System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
@@ -124,20 +127,18 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
     }
 
     @Override
-    public Map<Integer, Object[]> addSeveralElementsByIndex(Map<Integer, Object[]> singleLinkedList, Map<Integer, Object[]> addedSingleLinkedList) {
-        return null;
-    }
-
-
-    @Override
     public Map<Integer, Object[]> deleteElementByIndex(Map<Integer, Object[]> singleLinkedList) {
         System.out.println("*** Input The Index ! ***");
-
         if (sc.hasNextInt()) {
             int index = sc.nextInt();
+            if (index > 0 && index < singleLinkedList.size()) {
+                Object[] beAddedObjects = singleLinkedList.get(index - 1);
+                beAddedObjects[0] = index + 1;
+                singleLinkedList.remove(index - 1);
+                singleLinkedList.remove(index);
+                singleLinkedList.put(index - 1, beAddedObjects);
+                return singleLinkedList;
 
-            if (index > 0) {
-                return null;
             } else {
                 System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
                 return null;
@@ -148,11 +149,32 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
         }
     }
 
-
     @Override
-    public void updateElementByIndex(Map<Integer, Object[]> singleLinkedList) {
-
+    public Map<Integer, Object[]> updateElementByIndex(Map<Integer, Object[]> singleLinkedList) {
+        System.out.println("Input The Index!");
+        int index = sc.nextInt();
+        if (index > 0 && index < singleLinkedList.size()) {
+            System.out.println("Input The Element You Want to Updated!");
+            Object beUpdatedElement = sc.next();
+            singleLinkedList.get(index)[1] = beUpdatedElement;
+            return singleLinkedList;
+        } else {
+            System.out.println("Illegal Parameter! Using Default Null List!");
+            return null;
+        }
     }
 
-
+    @Override
+    public void outputWithLinkedIndex(Map<Integer, Object[]> singleLinkedList) {
+        System.out.println("Attention! The First Element Will Be Null For Front Pointer! ");
+        int frontPointer = 0;
+        Object element;
+        if (singleLinkedList != null) {
+            for (int i = 0; i < singleLinkedList.size(); i++) {
+                element = singleLinkedList.get(frontPointer)[1];
+                System.out.println(element);
+                frontPointer = (int) singleLinkedList.get(frontPointer)[0];
+            }
+        } else System.out.println("The Single Linked List Is Null!");
+    }
 }

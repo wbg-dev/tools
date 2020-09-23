@@ -23,14 +23,13 @@ public interface SingleLinkedListTools {
     Map<Integer, Object[]> addAnElementByIndex(Map<Integer, Object[]> singleLinkedList,
                                                Map<Integer, Object[]> addedSingleLinkedList);
 
-    Map<Integer, Object[]> addSeveralElementsByIndex(Map<Integer, Object[]> singleLinkedList,
-                                                     Map<Integer, Object[]> addedSingleLinkedList);
-
 
     Map<Integer, Object[]> deleteElementByIndex(Map<Integer, Object[]> singleLinkedList);
 
 
-    void updateElementByIndex(Map<Integer, Object[]> singleLinkedList);
+    Map<Integer, Object[]> updateElementByIndex(Map<Integer, Object[]> singleLinkedList);
+
+    void outputWithLinkedIndex(Map<Integer, Object[]> singleLinkedList);
 
 
 }
