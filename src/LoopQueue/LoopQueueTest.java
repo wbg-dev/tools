@@ -1,11 +1,12 @@
 package LoopQueue;
 
+import LoopQueue.tools.LoopQueueTools;
 import LoopQueue.tools.impl.LoopQueueToolsImpl;
 
 public class LoopQueueTest {
     public static void main(String[] args) {
         //Examples are listed for your convenient using!
-        LoopQueueToolsImpl test = new LoopQueueToolsImpl();
+        LoopQueueTools test = new LoopQueueToolsImpl();
         test.outputWelcomeOnConsole();
         // Example one : Create a new loop Queue,then output it!
         // Of course, you can use non-parameter method or method with parameter!
