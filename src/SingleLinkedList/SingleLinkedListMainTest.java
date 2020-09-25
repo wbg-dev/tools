@@ -1,5 +1,6 @@
 package SingleLinkedList;
 
+import SingleLinkedList.tools.SingleLinkedListTools;
 import SingleLinkedList.tools.impl.SingleLinkedListToolsImpl;
 
 import java.util.Map;
@@ -7,7 +8,7 @@ import java.util.Map;
 public class SingleLinkedListMainTest {
 
     public static void main(String[] args) {
-        SingleLinkedListToolsImpl test = new SingleLinkedListToolsImpl();
+        SingleLinkedListTools test = new SingleLinkedListToolsImpl();
         test.outputWelcomeOnConsole();
         // Example one: You can create a new single linked list by this method!
 //        test.createSingleLinkedList();
