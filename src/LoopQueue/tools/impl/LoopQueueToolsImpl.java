@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class LoopQueueToolsImpl implements LoopQueueTools {
+
     private Scanner sc = new Scanner(System.in);
 
     @Override
