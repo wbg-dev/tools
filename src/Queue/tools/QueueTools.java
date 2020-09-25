@@ -1,5 +1,7 @@
 package Queue.tools;
 
+import java.util.ArrayList;
+
 public interface QueueTools {
 
     void outputQueue(Object[] queue);
@@ -25,5 +27,13 @@ public interface QueueTools {
     Object[] takeElementFromQueue();
 
     void outputWelcomeOnConsole();
+
+    void outputQueue(ArrayList<Object> queue);
+
+    ArrayList<Object> newCreateQueue();
+
+    ArrayList<Object> addElementToQueueRear(ArrayList<Object> originQueue);
+
+    ArrayList<Object> deleteElementFromQueue(ArrayList<Object> originQueue);
 
 }

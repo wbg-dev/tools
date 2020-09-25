@@ -19,6 +19,7 @@ public class QueueToolsImpl implements QueueTools {
         } else System.out.println("Current Queue Is Null!");
     }
 
+
     @Override
     public void outputQueue() {
         outputQueue(createQueue());
@@ -151,4 +152,49 @@ public class QueueToolsImpl implements QueueTools {
         System.out.println("******Thanks Tor Using Simple Queue Tools******");
     }
 
+    @Override
+    public void outputQueue(ArrayList<Object> queue) {
+        if (queue != null) {
+            for (Object Queue : queue
+            ) {
+                System.out.println(Queue);
+            }
+        } else System.out.println("Current Queue Is Null!");
+    }
+
+    @Override
+    public ArrayList<Object> newCreateQueue() {
+        ArrayList<Object> queue = new ArrayList<>();
+        int i = 0;
+        // For solving how to stop input,we adapt random number combined with the string "END" as end code !
+        // For instance, "23.0END".
+        // Using the end code,you could stop input!
+        System.out.println("---Queue Input Start---");
+        String endCode = Math.ceil(new Random().nextDouble() * 100) + "END";
+        System.out.println("---If You Want To End Input, Please Input: " + endCode + "---");
+        while (true) {
+            Object element = sc.next();
+            if (!element.equals(endCode)) {
+                queue.add(i++, element);
+            } else break;
+        }
+        return queue;
+    }
+
+    @Override
+    public ArrayList<Object> addElementToQueueRear(ArrayList<Object> originQueue) {
+        ArrayList<Object> addedArray = newCreateQueue();
+        for (Object anAddedArray : addedArray) {
+            originQueue.add(originQueue.size(), anAddedArray);
+        }
+        return originQueue;
+    }
+
+    @Override
+    public ArrayList<Object> deleteElementFromQueue(ArrayList<Object> originQueue) {
+        if (originQueue.size() == 0)
+            return originQueue;
+        originQueue.remove(0);
+        return originQueue;
+    }
 }

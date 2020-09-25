@@ -1,12 +1,13 @@
 package Queue;
 
+import Queue.tools.QueueTools;
 import Queue.tools.impl.QueueToolsImpl;
 
 public class QueueTest {
 
     public static void main(String[] args) {
         //Examples are listed for your convenient using!
-        QueueToolsImpl test = new QueueToolsImpl();
+        QueueTools test=new QueueToolsImpl();
         test.outputWelcomeOnConsole();
         // Example one ：Output the queue which you just input!
         // Of course, you can use non-parameter method or method with parameter!
