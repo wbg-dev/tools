@@ -19,7 +19,6 @@ public class QueueToolsImpl implements QueueTools {
         } else System.out.println("Current Queue Is Null!");
     }
 
-
     @Override
     public void outputQueue() {
         outputQueue(createQueue());
