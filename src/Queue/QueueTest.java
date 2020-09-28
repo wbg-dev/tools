@@ -34,13 +34,15 @@ public class QueueTest {
 //        Object[] objects = test.addElementToQueueRear(queue);
 //        test.outputQueue(objects);
 //        test.outputQueue(test.addElementToQueueRear(test.createQueue()));
-        //Example five : Take out the first element,then output the new queue!
+        // Example five : Take out the first element,then output the new queue!
         // Of course, you can use non-parameter method or method with parameter!
         // Of course, you can use decoupling way or not!
 //        Object[] queue = test.createQueue();
 //        Object[] objects = test.takeElementFromQueue(queue);
 //        test.outputQueue(objects);
+        // Example six : New way to implements above method is provided!
 //        test.outputQueue(test.takeElementFromQueue(test.createQueue()));
-
+//        test.outputQueue(test.updateElementFromQueue(test.newCreateQueue(),3));
+//        test.newOutputQueue(test.newTakeElementFromQueue(test.newCreateQueue()));
     }
 }

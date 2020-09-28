@@ -28,12 +28,25 @@ public interface QueueTools {
 
     void outputWelcomeOnConsole();
 
-    void outputQueue(ArrayList<Object> queue);
+    void newOutputQueue(ArrayList<Object> queue);
 
     ArrayList<Object> newCreateQueue();
 
-    ArrayList<Object> addElementToQueueRear(ArrayList<Object> originQueue);
+    ArrayList<Object> newAddElementToQueueRear(ArrayList<Object> originQueue);
 
-    ArrayList<Object> deleteElementFromQueue(ArrayList<Object> originQueue);
+    ArrayList<Object> newDeleteElementFromQueue(ArrayList<Object> originQueue);
+
+    ArrayList<Object> newUpdateElementFromQueue(ArrayList<Object> originQueue, Object updatedElement);
+
+    ArrayList<Object> newTakeElementFromQueue();
+
+    ArrayList<Object> newTakeElementFromQueue(ArrayList<Object> originQueue);
+
+    ArrayList<Object> newAddElementToQueueRear();
+
+    ArrayList<Object> newDeleteElementFromQueue();
+
+    ArrayList<Object> newUpdateElementFromQueue();
+
 
 }
