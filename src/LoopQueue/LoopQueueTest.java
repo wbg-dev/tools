@@ -3,6 +3,8 @@ package LoopQueue;
 import LoopQueue.tools.LoopQueueTools;
 import LoopQueue.tools.impl.LoopQueueToolsImpl;
 
+import java.util.ArrayList;
+
 public class LoopQueueTest {
     public static void main(String[] args) {
         //Examples are listed for your convenient using!
@@ -54,7 +56,7 @@ public class LoopQueueTest {
 //        Object[] objects = test.takeFrontElementFromLoopQueue(loopQueue);
 //        test.outputLoopQueue(objects);
 //        test.outputLoopQueue(test.takeFrontElementFromLoopQueue(test.createLoopQueue()));
-
+        test.newOutputLoopQueue(test.newTakeFrontElementFromLoopQueue(test.newCreateLoopQueue()));
 
     }
 }
