@@ -110,11 +110,19 @@ public class StackToolsImpl implements StackTools {
     @Override
     public void queryElementByIndex(ArrayList<Object> stack) {
         System.out.println("Input the Index!");
-        arrow = sc.nextInt();
-        if (arrow - 1 >= 0 && arrow <= stack.size()) {
-            Object beQueriedElement = stack.get(arrow - 1);
-            System.out.println("The Element You Query Is " + beQueriedElement);
-        } else System.out.println("The Stack Is Unable To Query Element By Input Index !");
+        String length = sc.next();
+        char[] store = new char[1];
+        length.getChars(0, 1, store, 0);
+        if ('0' > store[0] || store[0] > '9') {
+            System.out.println("Wrong Parameter! Please Reusing This Method! ");
+            queryElementByIndex(stack);
+        } else {
+            arrow = Integer.parseInt(String.valueOf(store[0]));
+            if (arrow - 1 >= 0 && arrow <= stack.size()) {
+                Object beQueriedElement = stack.get(arrow - 1);
+                System.out.println("The Element You Query Is " + beQueriedElement);
+            } else System.out.println("The Stack Is Unable To Query Element By Input Index !");
+        }
     }
 
     @Override
