@@ -206,22 +206,23 @@ public class QueueToolsImpl implements QueueTools {
         System.out.println("Y : yes");
         System.out.println("N : no");
         String yesOrNo = sc.next();
-        if ("Y".equalsIgnoreCase(yesOrNo)) {
+        if ("Y".equals(yesOrNo)) {
             System.out.println("Please Select The Position You Want!");
-
             if (sc.hasNextInt()) {
-
                 location = sc.nextInt() - 1;
                 if (location > originQueue.size() || location < 0) {
-                    System.out.println("Illegal Parameter，Will Return Origin Queue!");
-                    return originQueue;
+                    System.out.println("Wrong Parameter! Please Reusing This Method!");
+                    return newUpdateElementFromQueue(originQueue,updatedElement);
                 }
                 originQueue.remove(location);
                 originQueue.add(location, updatedElement);
                 return originQueue;
             } else return originQueue;
         } else {
-            System.out.println("This Program Will Return Your Origin Queue!");
+            if (!"N".equals(yesOrNo)) {
+                System.out.println("Wrong Parameter! Please Reusing This Method!");
+                return newUpdateElementFromQueue(originQueue,updatedElement);
+            }
             if (originQueue.size() == 0)
                 System.out.println("There Are No Elements!");
             return originQueue;
@@ -235,14 +236,20 @@ public class QueueToolsImpl implements QueueTools {
 
     public ArrayList<Object> newTakeElementFromQueue(ArrayList<Object> originQueue) {
         int location = 1;
-        if (location > originQueue.size())
-            System.out.println("Illegal parameter，Using Default Null Queue!");
-        if (originQueue.size() != 0 && location < originQueue.size()) {
+        if (location > originQueue.size()) {
+            System.out.println("Illegal parameter，Please Reusing This Method !");
+            return newTakeElementFromQueue();
+        }
+        if (location < originQueue.size()) {
             Object beTakenElement = originQueue.get(location - 1);
             System.out.println("Taken Element：" + beTakenElement);
             System.out.println("Current Queue：");
             return newDeleteElementFromQueue(originQueue);
-        } else return originQueue;
+        } else {
+            System.out.println("The Taken Element Is " + originQueue.get(0));
+            originQueue.remove(0);
+            return originQueue;
+        }
     }
 
     @Override
@@ -258,7 +265,7 @@ public class QueueToolsImpl implements QueueTools {
     @Override
     public ArrayList<Object> newUpdateElementFromQueue() {
         System.out.println("Please Input The New Element");
-        Object updatedElement=sc.next();
-        return newUpdateElementFromQueue(newCreateQueue(),updatedElement);
+        Object updatedElement = sc.next();
+        return newUpdateElementFromQueue(newCreateQueue(), updatedElement);
     }
 }

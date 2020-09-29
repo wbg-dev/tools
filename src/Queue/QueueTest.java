@@ -42,7 +42,7 @@ public class QueueTest {
 //        test.outputQueue(objects);
         // Example six : New way to implements above method is provided!
 //        test.outputQueue(test.takeElementFromQueue(test.createQueue()));
-//        test.outputQueue(test.updateElementFromQueue(test.newCreateQueue(),3));
+        test.newOutputQueue(test.newUpdateElementFromQueue(test.newCreateQueue(),3));
 //        test.newOutputQueue(test.newTakeElementFromQueue(test.newCreateQueue()));
     }
 }
