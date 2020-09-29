@@ -56,7 +56,8 @@ public class LoopQueueTest {
 //        Object[] objects = test.takeFrontElementFromLoopQueue(loopQueue);
 //        test.outputLoopQueue(objects);
 //        test.outputLoopQueue(test.takeFrontElementFromLoopQueue(test.createLoopQueue()));
-        test.newOutputLoopQueue(test.newTakeFrontElementFromLoopQueue(test.newCreateLoopQueue()));
+        // Example Seven: New and better method is provided, but old method is never deleted!
+//        test.newOutputLoopQueue(test.newTakeFrontElementFromLoopQueue(test.newCreateLoopQueue()));
 
     }
 }

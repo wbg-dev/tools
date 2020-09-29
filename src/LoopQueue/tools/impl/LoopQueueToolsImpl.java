@@ -47,12 +47,12 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
                 break;
             Object element = sc.next();
             if (!element.equals(endCode)) {
-                loopQueue.add(count++,element);
+                loopQueue.add(count++, element);
             } else break;
         }
-        if (count<length){
-            for (int i = count; i <length ; i++) {
-                loopQueue.add(i,null);
+        if (count < length) {
+            for (int i = count; i < length; i++) {
+                loopQueue.add(i, null);
             }
         }
         return loopQueue;
@@ -61,21 +61,16 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
     @Override
     public ArrayList<Object> newCreateLoopQueue() {
         System.out.println("*** Input Loop Queue Length! ***");
-        int length;
-
-        try{
-
-        length = sc.nextInt();
-
-            if (length>0)
-                return newCreateLoopQueue(length);
-        }catch (Exception e){
-            e.printStackTrace();
-        } finally {
-            System.out.println("For Your Continuous Using, We Use Default Value!");
-
+        String length = sc.next();
+        char[] store = new char[1];
+        length.getChars(0, 1, store, 0);
+        if ('0' > store[0] || store[0] > '9') {
+            System.out.println(" Wrong Parameter! Please Reusing This Method! ");
+            return newCreateLoopQueue();
+        } else {
+            int size = Integer.parseInt(String.valueOf(store[0]));
+            return newCreateLoopQueue(size);
         }
-        return newCreateLoopQueue(1000);
 
     }
 
@@ -136,7 +131,7 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
         if (addedElement.size() <= remain) {
             for (Object anAddedElement : addedElement) {
-                loopQueue.add(currentQueueSize++,anAddedElement);
+                loopQueue.add(currentQueueSize++, anAddedElement);
             }
         } else {
             System.out.println("Illegal Inserting! Using Default Null Loop Queue!");
@@ -170,9 +165,9 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public ArrayList<Object> newTakeFrontElementFromLoopQueue(ArrayList<Object> loopQueue) {
-        if (loopQueue==null){
+        if (loopQueue == null) {
             System.out.println("The Loop Queue Is Null ! The Loop Queue Is Unable To Do This Operation!");
-        }else {
+        } else {
             Object firstElement = loopQueue.get(0);
             System.out.println("The Taken Element Is " + firstElement);
             if (newGetSize(loopQueue) == 1) {
@@ -181,12 +176,12 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
                 return loopQueue;
             }
             if (newGetSize(loopQueue) > 1) {
-                int storedTempCapacity=loopQueue.size();
-                ArrayList<Object> storedTemp=new ArrayList<>(storedTempCapacity);
-                for (int i = 0; i < storedTempCapacity-1 ; i++) {
-                    storedTemp.add(i,loopQueue.get(i+1));
+                int storedTempCapacity = loopQueue.size();
+                ArrayList<Object> storedTemp = new ArrayList<>(storedTempCapacity);
+                for (int i = 0; i < storedTempCapacity - 1; i++) {
+                    storedTemp.add(i, loopQueue.get(i + 1));
                 }
-                storedTemp.add(storedTemp.size(),null);
+                storedTemp.add(storedTemp.size(), null);
                 return storedTemp;
             } else {
                 System.out.println("Illegal Parameter! Using Origin Queue! ");
@@ -213,12 +208,12 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public boolean newIsMax(ArrayList<Object> loopQueue) {
-        return false;
+        return loopQueue.size() == newGetSize(loopQueue);
     }
 
     @Override
     public boolean newIsMax() {
-        return false;
+        return newIsMax(newCreateLoopQueue());
     }
 
     @Override
@@ -233,12 +228,12 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public boolean newIsNull(ArrayList<Object> loopQueue) {
-        return false;
+        return loopQueue.get(0) == null;
     }
 
     @Override
     public boolean newIsNull() {
-        return false;
+        return newIsNull(newCreateLoopQueue());
     }
 
     @Override
