@@ -110,19 +110,26 @@ public class StackToolsImpl implements StackTools {
     @Override
     public void queryElementByIndex(ArrayList<Object> stack) {
         System.out.println("Input the Index!");
+        StringBuilder s = new StringBuilder();
         String length = sc.next();
-        char[] store = new char[1];
-        length.getChars(0, 1, store, 0);
-        if ('0' > store[0] || store[0] > '9') {
-            System.out.println("Wrong Parameter! Please Reusing This Method! ");
-            queryElementByIndex(stack);
-        } else {
-            arrow = Integer.parseInt(String.valueOf(store[0]));
-            if (arrow - 1 >= 0 && arrow <= stack.size()) {
-                Object beQueriedElement = stack.get(arrow - 1);
-                System.out.println("The Element You Query Is " + beQueriedElement);
-            } else System.out.println("The Stack Is Unable To Query Element By Input Index !");
+        char[] store = new char[length.length()];
+        length.getChars(0, length.length(), store, 0);
+        for (int i = 0; i < length.length(); i++) {
+            if ('0' > store[i] || store[i] > '9') {
+                System.out.println("Wrong Parameter! This Method Will Be Ended !");
+                break;
+            } else {
+                char c = store[i];
+                s.append(String.valueOf(c));
+                arrow = Integer.parseInt(s.toString());
+                if (arrow - 1 >= 0 && arrow <= stack.size()) {
+                    Object beQueriedElement = stack.get(arrow - 1);
+                    System.out.println("The Element You Query Is " + beQueriedElement);
+                } else System.out.println("The Stack Is Unable To Query Element By Input Index !");
+
+            }
         }
+
     }
 
     @Override
