@@ -61,16 +61,21 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
     @Override
     public ArrayList<Object> newCreateLoopQueue() {
         System.out.println("*** Input Loop Queue Length! ***");
+        StringBuilder s = new StringBuilder();
         String length = sc.next();
-        char[] store = new char[1];
-        length.getChars(0, 1, store, 0);
-        if ('0' > store[0] || store[0] > '9') {
-            System.out.println(" Wrong Parameter! Please Reusing This Method! ");
-            return newCreateLoopQueue();
-        } else {
-            int size = Integer.parseInt(String.valueOf(store[0]));
-            return newCreateLoopQueue(size);
+        char[] store = new char[length.length()];
+        length.getChars(0, length.length(), store, 0);
+        for (int i = 0; i < length.length(); i++) {
+            if ('0' > store[i] || store[i] > '9') {
+                System.out.println("Wrong Parameter! Please Reusing This Method! ");
+                return newCreateLoopQueue();
+            } else {
+                char c = store[i];
+                s.append(String.valueOf(c));
+            }
         }
+        int size = Integer.parseInt(s.toString());
+        return newCreateLoopQueue(size);
 
     }
 
@@ -92,7 +97,7 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public void newOutputLoopQueue(ArrayList<Object> loopQueue) {
-        if (loopQueue == null || loopQueue.size() == 0) {
+        if (newGetSize(loopQueue) == 0) {
             System.out.println("Now , This Loop Queue Is Null!");
         } else
             for (Object loop : loopQueue
@@ -117,7 +122,7 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
                 loopQueue[currentQueueSize++] = anAddedElement;
             }
         } else {
-            System.out.println("Illegal Inserting! Using Default Null Loop Queue!");
+            System.out.println("Illegal Inserting! Using Origin Loop Queue!");
             return loopQueue;
         }
         return loopQueue;
@@ -134,7 +139,7 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
                 loopQueue.add(currentQueueSize++, anAddedElement);
             }
         } else {
-            System.out.println("Illegal Inserting! Using Default Null Loop Queue!");
+            System.out.println("Illegal Inserting! Using Origin Loop Queue!");
             return loopQueue;
         }
         return loopQueue;
@@ -153,7 +158,7 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
             loopQueue[getSize(loopQueue) - 1] = null;
             return loopQueue;
         } else {
-            System.out.println("Illegal Parameter! Using Default Null Queue! ");
+            System.out.println("Illegal Parameter! Using Origin Queue! ");
             return loopQueue;
         }
     }
@@ -165,17 +170,19 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
 
     @Override
     public ArrayList<Object> newTakeFrontElementFromLoopQueue(ArrayList<Object> loopQueue) {
-        if (loopQueue == null) {
+        if (newGetSize(loopQueue) == 0) {
             System.out.println("The Loop Queue Is Null ! The Loop Queue Is Unable To Do This Operation!");
         } else {
-            Object firstElement = loopQueue.get(0);
-            System.out.println("The Taken Element Is " + firstElement);
             if (newGetSize(loopQueue) == 1) {
+                Object firstElement = loopQueue.get(0);
+                System.out.println("The Taken Element Is " + firstElement);
                 loopQueue.remove(0);
                 loopQueue.add(0, null);
                 return loopQueue;
             }
             if (newGetSize(loopQueue) > 1) {
+                Object firstElement = loopQueue.get(0);
+                System.out.println("The Taken Element Is " + firstElement);
                 int storedTempCapacity = loopQueue.size();
                 ArrayList<Object> storedTemp = new ArrayList<>(storedTempCapacity);
                 for (int i = 0; i < storedTempCapacity - 1; i++) {
@@ -183,12 +190,9 @@ public class LoopQueueToolsImpl implements LoopQueueTools {
                 }
                 storedTemp.add(storedTemp.size(), null);
                 return storedTemp;
-            } else {
-                System.out.println("Illegal Parameter! Using Origin Queue! ");
-                return loopQueue;
             }
         }
-        return null;
+        return loopQueue;
     }
 
     @Override

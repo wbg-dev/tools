@@ -3,7 +3,6 @@ package LoopQueue;
 import LoopQueue.tools.LoopQueueTools;
 import LoopQueue.tools.impl.LoopQueueToolsImpl;
 
-import java.util.ArrayList;
 
 public class LoopQueueTest {
     public static void main(String[] args) {
@@ -57,7 +56,7 @@ public class LoopQueueTest {
 //        test.outputLoopQueue(objects);
 //        test.outputLoopQueue(test.takeFrontElementFromLoopQueue(test.createLoopQueue()));
         // Example Seven: New and better method is provided, but old method is never deleted!
-//        test.newOutputLoopQueue(test.newTakeFrontElementFromLoopQueue(test.newCreateLoopQueue()));
+        test.newOutputLoopQueue(test.newTakeFrontElementFromLoopQueue(test.newCreateLoopQueue()));
 
     }
 }
