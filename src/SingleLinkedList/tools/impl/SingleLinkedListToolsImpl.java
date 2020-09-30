@@ -79,7 +79,20 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
     public void queryElementByIndex() {
         singleLinkedList = createSingleLinkedList();
         System.out.println("*** Input The Index ! ***");
-        queryElementByIndex(singleLinkedList, sc.nextInt());
+        StringBuilder s = new StringBuilder();
+        String length = sc.next();
+        char[] store = new char[length.length()];
+        length.getChars(0, length.length(), store, 0);
+        for (int i = 0; i < length.length(); i++) {
+            if ('0' > store[i] || store[i] > '9') {
+                System.out.println("Wrong Parameter! This Method Will Be Ended!");
+                System.exit(0);
+            } else {
+                char c = store[i];
+                s.append(String.valueOf(c));
+            }
+        }
+        queryElementByIndex(singleLinkedList, Integer.parseInt(s.toString()));
     }
 
     @Override
@@ -97,15 +110,40 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
     public void getElementByIndex() {
         singleLinkedList = createSingleLinkedList();
         System.out.println("*** Input The Index ! ***");
-        getElementByIndex(singleLinkedList, sc.nextInt());
+        StringBuilder s = new StringBuilder();
+        String length = sc.next();
+        char[] store = new char[length.length()];
+        length.getChars(0, length.length(), store, 0);
+        for (int i = 0; i < length.length(); i++) {
+            if ('0' > store[i] || store[i] > '9') {
+                System.out.println("Wrong Parameter! This Method Will Be Ended! ");
+                System.exit(0);
+            } else {
+                char c = store[i];
+                s.append(String.valueOf(c));
+            }
+        }
+        getElementByIndex(singleLinkedList, Integer.parseInt(s.toString()));
     }
 
     @Override
     public Map<Integer, Object[]> addAnElementByIndex(Map<Integer, Object[]> singleLinkedList, Map<Integer, Object[]> addedSingleLinkedList) {
         System.out.println("*** Input The Index ! ***");
-        if (sc.hasNextInt()) {
-            int index = sc.nextInt();
-            if (index > 0) {
+        StringBuilder s = new StringBuilder();
+        String length = sc.next();
+        char[] store = new char[length.length()];
+        length.getChars(0, length.length(), store, 0);
+        for (int i = 0; i < length.length(); i++) {
+            if ('0' > store[i] || store[i] > '9') {
+                System.out.println("Wrong Parameter! Please Reusing This Method! ");
+                return addAnElementByIndex(singleLinkedList,addedSingleLinkedList);
+            } else {
+                char c = store[i];
+                s.append(String.valueOf(c));
+            }
+        }
+        int index = Integer.parseInt(s.toString());
+            if (index > 0 && index<singleLinkedList.size()+addedSingleLinkedList.size()) {
                 Object[] addedObjects = addedSingleLinkedList.get(1);
                 addedObjects[0] = index;
                 int currentSize = singleLinkedList.size();
@@ -114,45 +152,65 @@ public class SingleLinkedListToolsImpl implements SingleLinkedListTools {
                 lastObjects[0] = currentSize;
                 Object[] nextObjects = singleLinkedList.get(index);
                 nextObjects[0] = singleLinkedList.size();
-                singleLinkedList.get(singleLinkedList.size())[0] = null;
                 return singleLinkedList;
             } else {
                 System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
                 return null;
             }
-        } else {
-            System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
-            return null;
-        }
+
     }
 
     @Override
     public Map<Integer, Object[]> deleteElementByIndex(Map<Integer, Object[]> singleLinkedList) {
         System.out.println("*** Input The Index ! ***");
-        if (sc.hasNextInt()) {
-            int index = sc.nextInt();
-            if (index > 0 && index < singleLinkedList.size()) {
-                Object[] beAddedObjects = singleLinkedList.get(index - 1);
-                beAddedObjects[0] = index + 1;
-                singleLinkedList.remove(index - 1);
-                singleLinkedList.remove(index);
-                singleLinkedList.put(index - 1, beAddedObjects);
-                return singleLinkedList;
-
+        StringBuilder s = new StringBuilder();
+        String length = sc.next();
+        char[] store = new char[length.length()];
+        length.getChars(0, length.length(), store, 0);
+        for (int i = 0; i < length.length(); i++) {
+            if ('0' > store[i] || store[i] > '9') {
+                System.out.println("Wrong Parameter! Please Reusing This Method! ");
+                return deleteElementByIndex(singleLinkedList);
             } else {
-                System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
+                char c = store[i];
+                s.append(String.valueOf(c));
+            }
+        }
+        int size = Integer.parseInt(s.toString());
+        if (size > 0 && size < singleLinkedList.size()) {
+            Object[] beAddedObjects = singleLinkedList.get(size - 1);
+            beAddedObjects[0] = size + 1;
+            singleLinkedList.remove(size - 1);
+            singleLinkedList.remove(size);
+            singleLinkedList.put(size - 1, beAddedObjects);
+            return singleLinkedList;
+        } else {
+            if (singleLinkedList.size() == 1) {
+                System.out.println("The Single Linked List Is Null, It Is Unable to operate this command!");
                 return null;
             }
-        } else {
-            System.out.println("Illegal Index! Using Default Null Single Linked List ! ");
-            return null;
+            System.out.println("Illegal Index! Please Reusing This Method! ");
+            return deleteElementByIndex(singleLinkedList);
         }
     }
 
     @Override
     public Map<Integer, Object[]> updateElementByIndex(Map<Integer, Object[]> singleLinkedList) {
         System.out.println("Input The Index!");
-        int index = sc.nextInt();
+        StringBuilder s = new StringBuilder();
+        String length = sc.next();
+        char[] store = new char[length.length()];
+        length.getChars(0, length.length(), store, 0);
+        for (int i = 0; i < length.length(); i++) {
+            if ('0' > store[i] || store[i] > '9') {
+                System.out.println("Wrong Parameter! Please Reusing This Method! ");
+                return updateElementByIndex(singleLinkedList);
+            } else {
+                char c = store[i];
+                s.append(String.valueOf(c));
+            }
+        }
+        int index = Integer.parseInt(s.toString());
         if (index > 0 && index < singleLinkedList.size()) {
             System.out.println("Input The Element You Want to Updated!");
             Object beUpdatedElement = sc.next();
